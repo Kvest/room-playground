@@ -3,7 +3,6 @@ package com.kvest.roomplayground.db
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.room.Room
 import com.kvest.roomplayground.db.dao.ItemDao
 import com.kvest.roomplayground.db.entity.ItemEntity
 import com.kvest.roomplayground.ext.waitValue
@@ -26,9 +25,7 @@ class ItemDaoTest {
 
     @Before
     fun initDb() {
-        db = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), PlaygroundDb::class.java)
-            .allowMainThreadQueries()
-            .build()
+        db = createDB(InstrumentationRegistry.getContext())
         dao = db.itemDao()
     }
 
