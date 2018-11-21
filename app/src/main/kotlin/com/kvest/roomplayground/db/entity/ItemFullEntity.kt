@@ -5,11 +5,11 @@ import androidx.room.Embedded
 
 
 @DatabaseView(
-    "SELECT items.*, states.* FROM items LEFT JOIN states ON items.id = states.state_id"
+    "SELECT items.*, states.* FROM items LEFT JOIN states ON states.state_id = items.id"
 )
 data class StatefulItemEntity(
     @Embedded
     val item: ItemEntity,
     @Embedded
-    val state: ItemStateEntity?
+    val state: ItemStateEntity
 )
